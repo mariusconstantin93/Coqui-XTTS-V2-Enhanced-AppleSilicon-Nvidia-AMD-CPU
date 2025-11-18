@@ -53,6 +53,20 @@ Professional voice cloning script using Coqui XTTS V2, with **universal GPU acce
 
 ---
 
+---
+
+## ⚠️ 🔴 **CRITICAL REQUIREMENT - READ THIS FIRST!** 🔴
+
+> **Before running this script, you MUST have your own voice recording file in the project folder!**
+> 
+> - **Required file**: `speaker.wav` (or any audio file with your voice)
+> - **Location**: Must be in the project directory (`Coqui-XTTS-V2-Enhanced-AppleSilicon-Nvidia-AMD-CPU/`)
+> - **Without this file, the script CANNOT clone your voice!**
+> 
+> 👉 **See the [Speaker.wav Requirements](#️-requirements-for-speakerwav-your-voice-file) section below for recording guidelines.**
+
+---
+
 ## 🎙️ Requirements for `speaker.wav` (Your Voice File)
 
 ### ✅ Critical Requirements for High-Quality Cloning:
@@ -130,35 +144,25 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 ## 🚀 Usage
 
-### Option 1: Simple Usage (No Arguments)
-
-Uses default files in project directory:
+### Basic Command Structure
 
 ```bash
-# Activate environment
+# First, activate the virtual environment
 source venv/bin/activate
 
-# Run with defaults (speaker.wav + sample_text_for_clone.txt)
-python3 generate_audio.py
-```
-
-**Output**: `cloned_sample_text_for_clone.wav`
-
----
-
-### Option 2: Custom Files (With Arguments)
-
-```bash
 # Basic syntax
 python3 generate_audio.py <voice_file> <text_file> -o <output_file>
 
-# Example 1: Custom files
+# Example 1: Using default files (speaker.wav + sample_text_for_clone.txt)
+python3 generate_audio.py speaker.wav sample_text_for_clone.txt -o output.wav
+
+# Example 2: Custom files
 python3 generate_audio.py my_voice.wav my_script.txt -o tutorial.wav
 
-# Example 2: With speed adjustment
+# Example 3: With speed adjustment
 python3 generate_audio.py speaker.wav script.txt --speed 1.1 -o fast_tutorial.wav
 
-# Example 3: All custom parameters
+# Example 4: All custom parameters
 python3 generate_audio.py voice.wav text.txt -o output.wav --speed 1.05 --temperature 0.75
 ```
 
@@ -184,11 +188,11 @@ python3 generate_audio.py voice.wav text.txt -o output.wav --speed 1.05 --temper
 ### Complete Command Examples:
 
 ```bash
-# 1. Simplest - use all defaults
-python3 generate_audio.py
+# 1. Using default files with default output name
+python3 generate_audio.py speaker.wav sample_text_for_clone.txt -o cloned_output.wav
 
-# 2. Custom files only
-python3 generate_audio.py my_voice.wav my_text.txt
+# 2. Custom files
+python3 generate_audio.py my_voice.wav my_text.txt -o result.wav
 
 # 3. Custom output name
 python3 generate_audio.py speaker.wav script.txt -o my_tutorial.wav
@@ -204,6 +208,8 @@ python3 generate_audio.py voice.wav text.txt -o custom.wav \
   --repetition_penalty 2.7 \
   --top_k 45
 ```
+
+**⚠️ Important**: You must specify both the voice file and text file - there are no defaults!
 
 ---
 
