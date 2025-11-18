@@ -34,7 +34,12 @@ Professional voice cloning script using Coqui XTTS V2, with **universal GPU acce
    - **Apple Silicon**: Native MPS acceleration (3-5x faster than CPU)
    - Automatic GPU detection and optimal device selection
 
-6. **Professional Audio Processing**
+6. **Multi-Language Support**
+   - Native support for **17 languages** (English, Spanish, French, German, Italian, Portuguese, Polish, Turkish, Russian, Dutch, Czech, Arabic, Chinese, Japanese, Hungarian, Korean, Hindi)
+   - Simple language selection via `--language` parameter
+   - Default: English (no parameter needed)
+
+7. **Professional Audio Processing**
    - Native WAV concatenation without quality loss
    - Automatic segment blending for seamless output
    - No external dependencies (ffmpeg) needed
@@ -180,27 +185,73 @@ python3 generate_audio.py voice.wav text.txt -o output.wav --speed 1.05 --temper
 | `--top_p` | Sampling diversity (0.1-1.0) | Auto-calibrated | `0.85` |
 | `--repetition_penalty` | Avoid repetition (1.0-5.0) | Auto-calibrated | `2.5` |
 | `--top_k` | Vocabulary sampling (1-100) | Auto-calibrated | `50` |
+| `--language`, `-l` | Target language | `en` (English) | `es`, `fr`, `de`, etc. |
 
 **💡 Tip**: For most users, no parameters are needed - auto-calibration handles everything!
+
+---
+
+### 🌍 Multi-Language Support
+
+XTTS V2 supports **17 languages** natively. By default, the script uses **English** (`en`).
+
+**Supported Languages:**
+- 🇬🇧 `en` - English (default)
+- 🇪🇸 `es` - Spanish
+- 🇫🇷 `fr` - French
+- 🇩🇪 `de` - German
+- 🇮🇹 `it` - Italian
+- 🇵🇹 `pt` - Portuguese
+- 🇵🇱 `pl` - Polish
+- 🇹🇷 `tr` - Turkish
+- 🇷🇺 `ru` - Russian
+- 🇳🇱 `nl` - Dutch
+- 🇨🇿 `cs` - Czech
+- �� `ar` - Arabic
+- 🇨🇳 `zh-cn` - Chinese (Simplified)
+- 🇯🇵 `ja` - Japanese
+- 🇭🇺 `hu` - Hungarian
+- 🇰🇷 `ko` - Korean
+- 🇮🇳 `hi` - Hindi
+
+**⚠️ Important:** 
+- Your `speaker.wav` file **must be in the same language** as your target language
+- For example: Spanish voice file → Spanish text generation
+- English voice file → English text generation only
+
+**Usage:**
+```bash
+# English (default - no need to specify)
+python3 generate_audio.py speaker.wav text.txt -o output.wav
+
+# Spanish
+python3 generate_audio.py voz_espanol.wav texto.txt --language es -o salida.wav
+
+# French
+python3 generate_audio.py voix_francais.wav texte.txt --language fr -o sortie.wav
+
+# German
+python3 generate_audio.py stimme_deutsch.wav text.txt --language de -o ausgabe.wav
+```
 
 ---
 
 ### Complete Command Examples:
 
 ```bash
-# 1. Using default files with default output name
+# 1. English (default - most common usage)
 python3 generate_audio.py speaker.wav sample_text_for_clone.txt -o cloned_output.wav
 
-# 2. Custom files
-python3 generate_audio.py my_voice.wav my_text.txt -o result.wav
+# 2. Spanish voice cloning
+python3 generate_audio.py voz_espanol.wav texto_espanol.txt --language es -o output_es.wav
 
-# 3. Custom output name
-python3 generate_audio.py speaker.wav script.txt -o my_tutorial.wav
+# 3. French with custom speed
+python3 generate_audio.py voix.wav texte.txt --language fr --speed 1.1 -o sortie.wav
 
-# 4. Faster speech for YouTube tutorials
-python3 generate_audio.py speaker.wav tutorial.txt --speed 1.15 -o youtube_tutorial.wav
+# 4. German tutorial (faster speech)
+python3 generate_audio.py stimme.wav tutorial.txt --language de --speed 1.15 -o tutorial_de.wav
 
-# 5. Manual parameter control (advanced)
+# 5. English with manual parameter control (advanced)
 python3 generate_audio.py voice.wav text.txt -o custom.wav \
   --speed 1.05 \
   --temperature 0.78 \

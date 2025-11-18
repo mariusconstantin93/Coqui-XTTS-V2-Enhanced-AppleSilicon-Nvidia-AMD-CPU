@@ -1097,6 +1097,11 @@ Usage examples:
     parser.add_argument('--top_k', '-k', type=int, metavar='TOP_K',
                        help='Active vocabulary (10-100) - auto-calibrated or set manually')
     
+    # Language selection
+    parser.add_argument('--language', '-l', type=str, default='en', metavar='LANG',
+                       choices=['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'tr', 'ru', 'nl', 'cs', 'ar', 'zh-cn', 'ja', 'hu', 'ko', 'hi'],
+                       help='Target language for TTS (default: en - English). Supported: en, es, fr, de, it, pt, pl, tr, ru, nl, cs, ar, zh-cn, ja, hu, ko, hi')
+    
     # Advanced options
     parser.add_argument('--no-auto-calibrate', action='store_true',
                        help='🔧 Disable automatic calibration (use manual/default parameters instead of vocal analysis)')
@@ -1258,6 +1263,7 @@ Usage examples:
     print("=" * 80)
     print("🎙️  XTTS V2 Voice Cloning")
     print(f"📂 {speaker_wav} → {text_file_path} → {output_file}")
+    print(f"🌍 Language: {args.language.upper()}")
     print(f"⚙️  Speed={args.speed}, Temp={args.temperature}, Top_p={args.top_p}, Rep_penalty={args.repetition_penalty}, Top_k={args.top_k}")
     print("=" * 80)
     
@@ -1360,7 +1366,7 @@ Usage examples:
         
         temp_file = os.path.join(temp_dir, f"segment_{i:04d}.wav")
         
-        if generate_segment_audio(tts, segment_text, is_complete_sentence, speaker_wav, "en", device, temp_file,
+        if generate_segment_audio(tts, segment_text, is_complete_sentence, speaker_wav, args.language, device, temp_file,
                                  custom_speed=args.speed, custom_temperature=args.temperature,
                                  custom_top_p=args.top_p, custom_repetition_penalty=args.repetition_penalty,
                                  custom_top_k=args.top_k, voice_analysis=voice_analysis_data):
