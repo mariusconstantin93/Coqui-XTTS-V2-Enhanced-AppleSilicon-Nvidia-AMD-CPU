@@ -1,0 +1,88 @@
+# ===============================================================================
+# XTTS V2 Voice Cloning - Requirements File  
+# Optimized for Apple Silicon (M4 Pro) and YouTube tutorials
+# 
+# Installation:
+#   python3 -m venv venv
+#   source venv/bin/activate  # on macOS/Linux
+#   pip install --upgrade pip
+#   pip install -r requirements.txt
+# ===============================================================================
+
+# ===== CORE TTS ENGINE =====
+# Coqui TTS - main voice cloning engine
+coqui-tts
+
+# ===== AUDIO PROCESSING =====  
+# For audio loading, processing and saving
+librosa              # Advanced audio analysis and processing
+soundfile            # I/O for audio files (WAV, FLAC)  
+pydub               # Simple audio manipulation and concatenation
+audioread           # Backend for audio file reading
+ffmpeg-python       # FFmpeg wrapper for audio conversions (optional)
+
+# ===== DEEP LEARNING & ML =====
+# PyTorch ecosystem for XTTS model inference
+torch               # Main ML framework with MPS support
+torchaudio          # Audio extensions for PyTorch  
+transformers        # Hugging Face transformers for NLP
+tokenizers          # Fast tokenization for transformers
+
+# ===== NUMERICAL COMPUTING =====
+# For numerical calculations, spectral analysis and voice calibration
+numpy               # Mathematical operations and arrays
+scipy               # Scientific algorithms and DSP
+scikit-learn        # Machine learning for voice analysis
+
+# ===== TEXT PROCESSING =====  
+# For text cleaning and sentiment analysis
+regex               # Advanced regular expressions
+pysbd               # Sentence boundary detection
+inflect             # Number-to-text conversions
+num2words           # Numeric to words conversions
+
+# ===== AUDIO ANALYSIS =====
+# For automatic calibration and voice characteristics analysis  
+numba               # JIT compilation for performance
+joblib              # Parallelization and caching
+
+# ===== UTILITIES =====
+# Utilities for progress, logging and configuration
+tqdm                # Progress bars for user feedback
+PyYAML              # Configuration and settings
+requests            # Model and resource downloads
+packaging           # Package version management
+
+# ===== HUGGING FACE ECOSYSTEM =====
+# For model download and management
+huggingface-hub     # Hugging Face Hub client
+safetensors         # Safe tensor format
+
+# ===== SYSTEM UTILITIES =====
+# For system monitoring and processes  
+psutil              # System info and monitoring
+
+# ===== VISUALIZATION (OPTIONAL) =====
+# For debugging and analysis (comment out if not using)
+matplotlib          # Plotting for audio analysis
+# tensorboard       # Metrics visualization (optional)
+
+# ===============================================================================
+# TESTED AND COMPATIBLE VERSIONS
+# ===============================================================================
+# Python: 3.11.x (recommended) or 3.10.x-3.12.x  
+# macOS: 14+ (Sonoma) with Apple Silicon (M1/M2/M3/M4)
+# RAM: minimum 8GB, recommended 16GB for large models
+# Storage: ~4GB for XTTS V2 models
+# 
+# OPTIMAL PERFORMANCE:
+# - Apple Silicon (M4 Pro): ~3-4 minutes for 2250 chars text
+# - MPS acceleration: automatically enabled for PyTorch
+# - Memory usage: ~2-3GB RAM during processing
+# ===============================================================================
+
+# NOTES FOR USERS:
+# 1. First run will automatically download XTTS V2 models (~2GB)
+# 2. Voice auto-calibration requires librosa and scipy for spectral analysis  
+# 3. All dependencies tested on Apple Silicon M4 Pro with macOS 15
+# 4. For issues, check Python and PyTorch version compatibility
