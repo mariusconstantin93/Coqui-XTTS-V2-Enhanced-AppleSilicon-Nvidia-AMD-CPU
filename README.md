@@ -2,7 +2,7 @@
 
 ## 📋 What is this?
 
-Professional voice cloning script using Coqui XTTS V2, with **universal GPU acceleration** (NVIDIA, AMD, Apple Silicon) and advanced features that make it superior to using raw XTTS V2.
+A high-performance voice cloning engine built on Coqui XTTS v2, featuring universal GPU acceleration (NVIDIA / AMD / Apple Silicon) and a superior workflow that outperforms raw XTTS v2 in speed, quality, and control.
 
 ## ✨ Why use this script instead of raw Coqui XTTS V2?
 
